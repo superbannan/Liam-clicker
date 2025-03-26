@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liam Clicker Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <h1>Liam Clicker Game</h1>
+
+        <!-- Player's name and ability to change it -->
+        <div>
+            <label for="playerName">Enter your name: </label>
+            <input type="text" id="playerName" placeholder="Enter your name" />
+            <button onclick="changeName()">Change Name</button>
+        </div>
+
+        <h2 id="greeting">Welcome, Player!</h2>
+
+        <!-- Clicker button -->
+        <button id="clickButton" onclick="earnLiamBucks()">Click to earn Liam Bucks!</button>
+        <h3>Current Liam Bucks: <span id="liamBucksCount">0</span></h3>
+
+        <!-- Upgrade board -->
+        <div id="upgradeBoard">
+            <h3>Upgrades</h3>
+            <button onclick="buyClickUpgrade()">Upgrade Click (50 Liam Bucks)</button>
+            <button onclick="buyClickSkin()">Upgrade Skin (100 Liam Bucks)</button>
+        </div>
+
+        <!-- Cheat board (accessible with specific name) -->
+        <div id="cheatBoard" style="display: none;">
+            <h3>Cheat Board</h3>
+            <button onclick="giveMoreMoney()">Give 1000 Liam Bucks</button>
+            <button onclick="unlockAllUpgrades()">Unlock All Upgrades</button>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
