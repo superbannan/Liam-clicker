@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liam Clicker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-board">
+            <h1>Liam Clicker</h1>
+            <p>Click the face to earn points!</p>
+            <img src="liam-face.jpg" id="face" alt="Liam's face" onclick="incrementScore()">
+            <p>Score: <span id="score">0</span></p>
+        </div>
+        <div class="upgrades">
+            <h2>Upgrades</h2>
+            <button id="upgrade1" onclick="buyUpgrade('person1')">Hire Person 1</button>
+            <button id="upgrade2" onclick="buyUpgrade('person2')">Hire Person 2</button>
+            <button id="upgrade3" onclick="buyUpgrade('person3')">Hire Person 3</button>
+            <p>Points per click: <span id="click-value">1</span></p>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
+
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.game-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.game-board {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #000;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.upgrades {
+    padding: 20px;
+    border: 2px solid #000;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+button {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+img {
+    width: 200px;
+    cursor: pointer;
+    border-radius: 50%;
+
+// game.js
+
+let score = 0;
+let clickValue = 1;
+let upgrades = {
+    person1: { cost: 50, multiplier: 1 },
+    person2: { cost: 150, multiplier: 2 },
+    person3: { cost: 500, multiplier: 5 },
+};
+
+function incrementScore() {
+    score += clickValue;
+    updateScore();
+}
+
+function updateScore() {
+    document.getElementById("score").innerText = score;
+    document.getElementById("click-value").innerText = clickValue;
+}
+
+function buyUpgrade(person) {
+    if (score >= upgrades[person].cost) {
+        score -= upgrades[person].cost;
+        clickValue += upgrades[person].multiplier;
+        upgrades[person].cost *= 2; // Increase the cost for future purchases
+        alert(`You bought ${person}! Your points per click is now ${clickValue}`);
+        updateScore();
+    } else {
+        alert("You don't have enough points to buy this upgrade.");
+    }
+}
