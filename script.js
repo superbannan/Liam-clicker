@@ -10,7 +10,7 @@ function earnLiamBucks() {
 }
 
 function buyClickUpgrade() {
-    if (liamBucks >= 50 && !upgrades.clickUpgrade) {
+    if (liamBucks >= 25] && !upgrades.clickUpgrade) {
         liamBucks -= 50;
         clickValue *= 2;
         upgrades.clickUpgrade = true;
