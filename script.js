@@ -1,68 +1,34 @@
-let liamBucks = 0;
-let clickValue = 1;
-let playerName = "Player";
-let upgrades = { clickUpgrade: false, skinUpgrade: false };
-let cheatModeActive = false;
-
-function earnLiamBucks() {
-    liamBucks += clickValue;
-    document.getElementById("liamBucksCount").innerText = liamBucks;
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #f7f7f7;
 }
 
-function buyClickUpgrade() {
-    if (liamBucks >= 25] && !upgrades.clickUpgrade) {
-        liamBucks -= 50;
-        clickValue *= 2;
-        upgrades.clickUpgrade = true;
-        document.getElementById("liamBucksCount").innerText = liamBucks;
-        alert("Click upgrade purchased!");
-    } else {
-        alert("Not enough Liam Bucks or already purchased!");
-    }
+#gameContainer {
+    max-width: 600px;
+    margin: auto;
 }
 
-function buyClickSkin() {
-    if (liamBucks >= 100 && !upgrades.skinUpgrade) {
-        liamBucks -= 100;
-        upgrades.skinUpgrade = true;
-        document.getElementById("liamBucksCount").innerText = liamBucks;
-        alert("Skin upgrade purchased!");
-    } else {
-        alert("Not enough Liam Bucks or already purchased!");
-    }
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
 }
 
-function changeName() {
-    playerName = document.getElementById("playerName").value || "Player";
-    document.getElementById("greeting").innerText = "Welcome, " + playerName + "!";
-    checkCheatAccess();
+button:hover {
+    background-color: #45a049;
 }
 
-function checkCheatAccess() {
-    if (playerName.toLowerCase() === "robbie") {
-        cheatModeActive = true;
-        document.getElementById("cheatBoard").style.display = "block";
-    } else {
-        cheatModeActive = false;
-        document.getElementById("cheatBoard").style.display = "none";
-    }
+#upgradeBoard, #cheatBoard {
+    margin-top: 30px;
 }
 
-function giveMoreMoney() {
-    if (cheatModeActive) {
-        liamBucks += 1000;
-        document.getElementById("liamBucksCount").innerText = liamBucks;
-        alert("1000 Liam Bucks added!");
-    }
-}
-
-function unlockAllUpgrades() {
-    if (cheatModeActive) {
-        upgrades.clickUpgrade = true;
-        upgrades.skinUpgrade = true;
-        clickValue = 2;
-        liamBucks -= 150;  // Charge the user for unlocking all upgrades
-        document.getElementById("liamBucksCount").innerText = liamBucks;
-        alert("All upgrades unlocked!");
-    }
+input {
+    padding: 8px;
+    font-size: 14px;
 }
